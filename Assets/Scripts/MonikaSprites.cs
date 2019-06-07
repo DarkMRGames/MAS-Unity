@@ -1,8 +1,11 @@
-﻿namespace Assets.Scripts.Monika
+﻿using System.Collections.Generic;
+
+namespace Assets.Scripts.Monika
 {
     public static class MonikaSprites
     {
         private const string pathMonikaFace = "Textures/Monika/Face/";
+        private const string pathMonikaHairs = "Textures/Monika/Hair/";
 
         internal static SpritesCollection
             Eyebrows = new SpritesCollection(pathMonikaFace + "face-eyebrows-"){
@@ -38,6 +41,12 @@
                 { "x", "disgust" },
                 { "p", "pout" },
                 { "t", "triangle" },
+            };
+
+        internal static Dictionary<string, MonikaHair> 
+            Hairs = new Dictionary<string, MonikaHair>() {
+                { "def", new MonikaHair(pathMonikaHairs + "Def/", "def", true) },
+                { "down", new MonikaHair(pathMonikaHairs + "Down/", "down", false) }
             };
     }
 }

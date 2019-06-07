@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    sealed class DayTime : MonoBehaviour, IDayTime
+    sealed class DayTime : MonoBehaviour, IDayTime, IDayTimeEvents
     {
         public event EventHandler<DayTimeChangeEventArgs> DayTimeChange;
         private bool _isDayOnTheLastFrame;

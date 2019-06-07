@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    sealed class GUIManager : MonoBehaviour, IGUIManager
+    sealed class GUIManager : MonoBehaviour, IGUIManager, IGUIEvents
     {
         public event EventHandler<InterfaceVisibiltyEventArgs> InterfaceVisibiltyChanged;
         private bool _visibleInterface = true;

@@ -10,9 +10,11 @@ namespace Assets.Scripts
         public readonly static IEvents Events = new EventManager();
 
         internal static IMonika Monika { get; set; }
-        internal static IDayTime DayTime { get; set; }
-        internal static IGUIManager GUIManager { get; set; }
+        internal static DayTime DayTime { get; set; }
+        internal static GUIManager GUIManager { get; set; }
         internal static DialogBox Dialog { get; set; }
+
+        private bool defHair = true;
 
         private static readonly MonikaPose[] poses = new MonikaPose[]{
             "1nka", "1wtc", "1tfo", "1cuu", "1rsx"
@@ -46,6 +48,12 @@ namespace Assets.Scripts
             if (Input.GetKeyDown(KeyCode.L))
             {
                 Monika.Pose = Monika.IsLeaning? "1eua" : "5eua";
+            }
+
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                Monika.SetHair(defHair ? "down" : "def");
+                defHair = !defHair;
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Assets.Scripts.Api
 {
-    interface IGUIManager : IGUIEvents
+    interface IGUIManager
     {
         bool IsInterfaceVisible { get; }
 

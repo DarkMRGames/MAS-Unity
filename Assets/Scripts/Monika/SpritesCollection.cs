@@ -9,12 +9,7 @@ namespace Assets.Scripts.Monika
 
         public Sprite GetSprite(string key)
         {
-            string resource = _resourcePath + this[key];
-
-            if (Global.DayTime.IsNight)
-                resource += "-n";
-
-            return Resources.Load<Sprite>(resource);
+            return MonikaUtil.GetSprite(_resourcePath + this[key]);
         }
 
         internal SpritesCollection(string resourcePath)

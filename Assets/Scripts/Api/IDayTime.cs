@@ -1,8 +1,6 @@
-﻿using Assets.Scripts.Api;
-
-namespace Assets.Scripts
+﻿namespace Assets.Scripts
 {
-    interface IDayTime : IDayTimeEvents
+    interface IDayTime
     {
         bool IsDay { get; }
         bool IsNight { get; }
