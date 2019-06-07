@@ -52,9 +52,6 @@ TagManager:
   - name: Monika
     uniqueID: 2205160379
     locked: 0
-  - name: Monika face
-    uniqueID: 4181504505
-    locked: 0
   - name: GUI
     uniqueID: 2306501917
     locked: 0

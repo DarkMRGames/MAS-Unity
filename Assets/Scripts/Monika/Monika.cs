@@ -8,6 +8,7 @@ namespace Assets.Scripts.Monika
     {
         private MonikaPose _actualPose;
         private IMonikaHair _actualHair;
+        private IMonikaClothing _actualClothing;
 
         public GameObject
             hair_back, body, ribbon, hair_front, arms, face,
@@ -48,7 +49,42 @@ namespace Assets.Scripts.Monika
                 _actualHair = value;
             }
         }
-        
+
+        public string HairName
+        {
+            set
+            {
+                Hair = MonikaSprites.Hairs[value];
+            }
+        }
+
+        public IMonikaClothing Clothing
+        {
+            set
+            {
+                if (_actualPose.IsLeaning)
+                {
+                    body.GetComponent<SpriteRenderer>().sprite = value.BodyLeaning;
+                    arms.GetComponent<SpriteRenderer>().sprite = _actualPose.GetArms(value);
+                }
+                else
+                {
+                    body.GetComponent<SpriteRenderer>().sprite = value.Body;
+                    arms.GetComponent<SpriteRenderer>().sprite = _actualPose.GetArms(value);
+                }
+
+                _actualClothing = value;
+            }
+        }
+
+        public string ClothingName
+        {
+            set
+            {
+                Clothing = MonikaSprites.Clothes[value];
+            }
+        }
+               
         public MonikaPose Pose
         {
             set
@@ -64,18 +100,15 @@ namespace Assets.Scripts.Monika
                 {
                     face.MoveTo(faceLeaningPosition);
                     Hair = _actualHair;
+                    Clothing = _actualClothing;
                 }
                 else if (isActualyLeaning)
                 {
                     face.MoveTo(facePosition);
                     Hair = _actualHair;
+                    Clothing = _actualClothing;
                 }
             }
-        }
-
-        public void SetHair(string hairName)
-        {
-            Hair = MonikaSprites.Hairs[hairName];
         }
 
         private void Awake()
@@ -86,8 +119,8 @@ namespace Assets.Scripts.Monika
         private void Start()
         {
             Pose = "1eua";
-
-            SetHair("def");
+            HairName = "def";
+            ClothingName = "def";
         }
 
         /*private void OnDestroy()

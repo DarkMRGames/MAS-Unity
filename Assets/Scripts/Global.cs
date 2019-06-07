@@ -14,10 +14,10 @@ namespace Assets.Scripts
         internal static GUIManager GUIManager { get; set; }
         internal static DialogBox Dialog { get; set; }
 
-        private bool defHair = true;
+        private bool _defHair = true, _defClothing = true;
 
         private static readonly MonikaPose[] poses = new MonikaPose[]{
-            "1nka", "1wtc", "1tfo", "1cuu", "1rsx"
+            "1nka", "4wtc", "2tfo", "1cuu", "3rsx", "5etp", "5eua", "6ekb"
         };
 
         void Update()
@@ -44,16 +44,17 @@ namespace Assets.Scripts
             {
                 Dialog.Text = "Ser ou não ser? eis a questão";
             }
-
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                Monika.Pose = Monika.IsLeaning? "1eua" : "5eua";
-            }
-
+            
             if (Input.GetKeyDown(KeyCode.H))
             {
-                Monika.SetHair(defHair ? "down" : "def");
-                defHair = !defHair;
+                Monika.HairName = _defHair ? "down" : "def";
+                _defHair = !_defHair;
+            }
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Monika.ClothingName = _defClothing ? "sundress_white" : "def";
+                _defClothing = !_defClothing;
             }
         }
     }

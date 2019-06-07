@@ -9,8 +9,10 @@ namespace Assets.Scripts.Monika
         int Affection { get; }
 
         IMonikaHair Hair { set; }
+        IMonikaClothing Clothing { set; }
         MonikaPose Pose { set; }
 
-        void SetHair(string hairName);
+        string HairName { set; }
+        string ClothingName { set; }
     }
 }

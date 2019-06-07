@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Api;
+using UnityEngine;
 
 namespace Assets.Scripts.Monika
 {
@@ -35,6 +36,33 @@ namespace Assets.Scripts.Monika
             get
             {
                 return MonikaSprites.Mouth.GetSprite(_mouth);
+            }
+        }
+
+        public Sprite GetArms(IMonikaClothing clothing)
+        {
+            switch (_pose)
+            {
+                case "1":
+                    return clothing.ArmsSteepling;
+
+                case "2":
+                    return clothing.ArmsCrossed;
+
+                case "3":
+                    return clothing.ArmsRestLeftPointRight;
+
+                case "4":
+                    return clothing.ArmsPointRight;
+
+                case "5":
+                    return clothing.ArmsLeaning;
+
+                case "6":
+                    return clothing.ArmsDown;
+
+                default:
+                    return IsLeaning ? clothing.ArmsLeaning : clothing.ArmsSteepling;
             }
         }
 

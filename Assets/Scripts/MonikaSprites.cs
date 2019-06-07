@@ -1,11 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using Assets.Scripts.Api;
 
 namespace Assets.Scripts.Monika
 {
     public static class MonikaSprites
     {
-        private const string pathMonikaFace = "Textures/Monika/Face/";
-        private const string pathMonikaHairs = "Textures/Monika/Hair/";
+        private const string
+            pathMonikaFace = "Textures/Monika/Face/",
+            pathMonikaHairs = "Textures/Monika/Hair/",
+            pathMonikaClothes = "Textures/Monika/Clothes/";
 
         internal static SpritesCollection
             Eyebrows = new SpritesCollection(pathMonikaFace + "face-eyebrows-"){
@@ -30,7 +32,7 @@ namespace Assets.Scripts.Monika
                 { "n", "winkright" }
             },
 
-            Mouth = new SpritesCollection(pathMonikaFace + "face-mouth-"){                
+            Mouth = new SpritesCollection(pathMonikaFace + "face-mouth-"){
                 { "a", "smile" },
                 { "b", "big" },
                 { "c", "smirk" },
@@ -43,10 +45,16 @@ namespace Assets.Scripts.Monika
                 { "t", "triangle" },
             };
 
-        internal static Dictionary<string, MonikaHair> 
-            Hairs = new Dictionary<string, MonikaHair>() {
-                { "def", new MonikaHair(pathMonikaHairs + "Def/", "def", true) },
-                { "down", new MonikaHair(pathMonikaHairs + "Down/", "down", false) }
-            };
+        internal static NamedSpriteCollection<IMonikaHair> Hairs = new NamedSpriteCollection<IMonikaHair>
+        {
+            new MonikaHair(pathMonikaHairs + "Def/", "def", true),
+            new MonikaHair(pathMonikaHairs + "Down/", "down", false)
+        };
+
+        internal static NamedSpriteCollection<IMonikaClothing> Clothes = new NamedSpriteCollection<IMonikaClothing>
+        {
+            new MonikaClothing(pathMonikaClothes + "Def/", "def"),
+            new MonikaClothing(pathMonikaClothes + "SundressWhite/", "sundress_white")
+        };
     }
 }
